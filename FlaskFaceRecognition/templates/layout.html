@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="pt" dir="ltr">
+  <head>
+    <meta charset="utf-8">
+    <title></title>
+    <style media="screen">
+    /*8888888888888888888888888888888888888888888888888888*/
+    .btn1{
+      border:none;
+      outline:none;
+      height:50px;
+      width:100%;
+      background-color:  #007bff;
+      color:#FFFFFF;
+      border-radius:4px;
+      font-weight: bold;
+    }
+    .btn1:hover{
+      background-color:#FFFFFF;
+      border:1px solid;
+      color:  #007bff;
+    }
+    /*9999999999999999999999999999999999999999999999999999999999999*/
+    </style>
+
+    <link rel="stylesheet" href="{{url_for('static',filename='css/bootstrap.css') }}">
+    <script src="{{ url_for('static', filename='js/jquery.js') }}"></script>
+    <script src="{{ url_for('static', filename='js/bootstrap.bundle.js') }}"></script>
+  </head>
+  <body>
+    <nav class="navbar navbar-expand navbar-dark bg-primary">
+  <div class="container">
+      <a class="navbar-brand" href="#">Reconhecimento Facial</a>
+
+
+      <ul class="nav navbar-nav">
+        <li class="nav-item"> <a class="nav-link " href="/index">Home</a> </li>
+        <li class="nav-item"> <a class="nav-link " href="/livereg">Live</a> </li>
+        <li class="nav-item dropdown"> <a class="nav-link dropdown-toggle" data-toggle="dropdown" href="#">{{g.user}}</a>
+          <ul class="dropdown-menu">
+            <li> <a href="/logout">LogOut</a> </li>
+
+          </ul>
+         </li>
+
+      </ul>
+
+
+  </div>
+
+</nav>
+
+    <div class="container pt-4">
+
+    {% block body %}
+    {% endblock %}
+
+  </div>
+
+  <script src="{{ url_for('static',filename='js/js.js')}}" charset="utf-8"></script>
+  <script src="{{ url_for('static',filename='js/bootstrap.js')}}" charset="utf-8"></script>
+
+  </body>
+</html>

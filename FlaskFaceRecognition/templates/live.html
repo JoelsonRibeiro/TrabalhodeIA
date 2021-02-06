@@ -1,0 +1,52 @@
+{% extends "layout.html" %}
+
+
+{% block body %}
+
+<div class="container">
+
+
+<div class="row">
+
+  <form method="post">
+    <div class="form-row">
+
+      <div class="col-lg-7">
+        <div class="col-md-8 offset-lg-2">
+          <img src="{{ url_for('live')}}" alt="" class="img-fluid" height="500px" width="720">
+        </div>
+      </div>
+    </div>
+    <div class="form-row">
+
+    <div class="col-lg-7">
+      <input type="text" class="form-control my-3 p-4" name="username" value="" placeholder="Usuario" required>
+    </div>
+  </div>
+    <div class="form-row">
+      <div class="col-lg-7">
+        <button type="submit" class="btn1 mt-3 mb-5" name="button">Cadastrar</button>
+    </div>
+  </div>
+
+
+  </form>
+
+  {% with messages = get_flashed_messages(with_categories=true) %}
+    {% if messages %}
+      {% for category,message in messages %}
+
+        <div class="alert {{category}} alert-dismissible fade show" role="alert">
+          <p>{{message}}</p>
+
+        </div>
+
+        {% endfor %}
+      {% endif %}
+    {% endwith %}
+</div>
+
+
+</div>
+
+{% endblock %}

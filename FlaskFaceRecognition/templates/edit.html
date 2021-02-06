@@ -1,0 +1,39 @@
+{% extends "layout.html" %}
+
+{% block body %}
+
+<div class="row">
+  <div class="col-md-8 offset-md-3 ">
+    {% with messages = get_flashed_messages(with_categories=true) %}
+      {% if messages %}
+        {% for category,message in messages %}
+          <div class="alert {{category}} alert-dismissible fade show" role="alert">
+            {{message}}
+            <button type="button" class="close" data-dismiss="alert" aria-label="Close" name="button">
+              <span aria-hidden="true">x</span>
+            </button>
+          </div>
+          {% endfor %}
+        {% endif %}
+      {% endwith %}
+    <div class="card card-body">
+      <form class="" action="/update/{{user.0}}" method="post" enctype="multipart/form-data">
+        <div class="form-group">
+          <input type="text" name='nome' class="form-control my-3 p-4" value="{{user.1}}" />
+
+        </div>
+
+        <div class="form-group">
+          <input type="file" name='file' accept="image/*" value="{{user.2}}" />
+
+        </div>
+
+
+          <div class="form-action">
+            <button type="submit" class="btn1 btn-block" name="button">Atualizar</button>
+          </div>
+      </form>
+    </div>
+  </div>
+</div>
+{% endblock %}

@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+  <head>
+    <meta charset="utf-8">
+    <title></title>
+    <link rel="stylesheet" href="{{url_for('static',filename='css/custom.css') }}">
+
+    <link rel="stylesheet" href="{{url_for('static',filename='css/bootstrap.css') }}">
+    <script src="{{ url_for('static', filename='js/jquery.js') }}"></script>
+    <script src="{{ url_for('static', filename='js/bootstrap.bundle.js') }}"></script>
+  </head>
+  <body>
+    <section class="Form my-4 mx-5">
+      <div class="container-md">
+        <div class="row no-gutters">
+
+          <div class="col-lg-5">
+        <!--    <img src="{{ url_for('static', filename='images/Face1.jpg') }}" alt="" class="img-fluid" height="600px"> -->
+            <img src="{{ url_for('live')}}" alt="" class="img-fluid" height="600px">
+          </div>
+          <div class="col-lg-7 px-5 pt-5">
+            <h1 class="font-weight-bold py-3 ">Projecto de AI: Reconhecimento Facial</h1>
+            <h4>Log-in</h4>
+            <form method="post">
+              <div class="form-row">
+
+              <div class="col-lg-7">
+                <input type="text" class="form-control my-3 p-4" name="username" value="" placeholder="Usuario" required>
+              </div>
+            </div>
+              <div class="form-row">
+
+              <div class="col-lg-7">
+                <input type="password" class="form-control my-3 p-4" name="password" value="" placeholder="********" required>
+              </div>
+            </div>
+              <div class="form-row">
+
+              <div class="col-lg-7">
+<button type="submit" class="btn1 mt-3 mb-5" name="button">Login</button>
+</div>
+            </div>
+            <a href="#">Esqueceu a sua Senha</a>
+            <p> Não tem uma conta?<a href="#"> Cadastre-se aqui!</a> </p>
+
+            </form>
+            {% with messages = get_flashed_messages(with_categories=true) %}
+              {% if messages %}
+                {% for category,message in messages %}
+
+                  <div class="alert {{category}} alert-dismissible fade show" role="alert">
+                    <p>{{message}}</p>
+
+                  </div>
+
+                  {% endfor %}
+                {% endif %}
+              {% endwith %}
+          </div>
+        </div>
+
+      </div>
+
+    </section>
+
+
+
+
+
+
+    <script src="bootstrap/js/bootstrap.js" charset="utf-8"></script>
+  </body>
+</html>

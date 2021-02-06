@@ -1,0 +1,121 @@
+{% extends "layout.html" %}
+
+
+{% block body %}
+
+<div class="row">
+  <h3>Cadastrar Face</h3>
+</div>
+
+<div class="row">
+  <div class="col-md-4 pb-5">
+
+    {% with messages = get_flashed_messages(with_categories=true) %}
+      {% if messages %}
+        {% for category,message in messages %}
+        {% if 'rec' not in category %}
+          <div class="alert {{category}} alert-dismissible fade show" role="alert">
+            {{message}}
+            <button type="button" class="close" data-dismiss="alert" aria-label="Close" name="button">
+              <span aria-hidden="true">x</span>
+            </button>
+          </div>
+          {% endif %}
+          {% endfor %}
+        {% endif %}
+      {% endwith %}
+    <div class="card card-body">
+      <form method="post" action="{{url_for('add_user')}}" enctype="multipart/form-data" id="train">
+        <p class="description"></p>
+        <div class="form-group">
+          <input type="text" name='nome' class="form-control my-3 p-4" placeholder="Nome Completo" />
+
+        </div>
+
+        <div class="form-group custom-file">
+          <input type="file" class="custom-file-input" id="file_input" name='filec' accept="image/*" oninput="input_filename()" />
+          <label for="file_input" id="file_input_label" class="custom-file-label">Selecione o ficheiro</label>
+
+        </div>
+
+
+          <div class="form-action">
+            <button type="submit" class="btn1 btn-block" name="button">Cadastrar</button>
+          </div>
+        </form>
+    </div>
+  </div>
+
+  <div class="col-md-8">
+    <table id="table" class="table table-striped table-bordered" style="width:100%;">
+      <thead>
+        <tr>
+          <td>ID</td>
+          <td>Nome</td>
+          <td>Criado em: </td>
+          <td></td>
+          <td></td>
+        </tr>
+      </thead>
+
+      <tbody>
+
+        {% for dat in data.users %}
+
+          <tr>
+            <td>{{dat.0}}</td>
+            <td>{{dat.1}}</td>
+            <td>{{dat.2}}</td>
+            <td> <img src="" class="img-fluid" alt=""> </td>
+            <td>
+                <a href="/edit/{{dat.0}}" class="btn btn-primary btn-sm ml-4">editar</a>
+                <a href="/delete/{{dat.0}}" class="btn btn-danger btn-delete btn-sm ml-4">apagar</a>
+            </td>
+          </tr>
+
+        {% endfor %}
+      </tbody>
+    </table>
+  </div>
+
+
+  <!--<div class="col-md-4 pt-5">
+    <p>
+      <h3>Reconhecer Face</h3>
+    </p>
+
+    {% with messages = get_flashed_messages(with_categories=true) %}
+      {% if messages %}
+        {% for category,message in messages %}
+        {% if 'rec' in category %}
+          <div class="alert {{category.1}} alert-dismissible fade show" role="alert">
+            {{message}}
+            <button type="button" class="close" data-dismiss="alert" aria-label="Close" name="button">
+              <span aria-hidden="true">x</span>
+            </button>
+          </div>
+          {% endif %}
+          {% endfor %}
+        {% endif %}
+      {% endwith %}
+    <div class="card card-body">
+      <form method="post" action="{{url_for('reconhecer')}}" enctype="multipart/form-data" id="train">
+        <p class="description"></p>
+
+
+        <div class="form-group custom-file">
+          <input type="file" class="custom-file-input" id="file_input" name='file' accept="image/*" oninput="input_filename()" />
+          <label for="file_input" id="file_input_label" class="custom-file-label">Selecione o ficheiro</label>
+        </div>
+
+
+          <div class="form-action">
+            <button type="submit" class="btn1 btn-block" name="button">Reconhecer</button>
+          </div>
+        </form>
+    </div>
+  </div>-->
+
+</div>
+
+{% endblock %}
